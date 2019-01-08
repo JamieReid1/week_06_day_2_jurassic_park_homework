@@ -20,9 +20,14 @@ const Park = function(name, ticketPrice, dinosaurs = []) {
     const maxNum = Math.max(...nums);
     for (dinosaur of this.dinosaurs) {
       if (dinosaur.guestsAttractedPerDay === maxNum) {
-        return dinosaur.species;
+        return dinosaur;
       };
     };
+  };
+
+  Park.prototype.findDinosaurBySpecies = function(species) {
+    const foundDinosaur = this.dinosaurs.filter(dinosaur => dinosaur.species === species);
+    return foundDinosaur;
   };
 
 };
