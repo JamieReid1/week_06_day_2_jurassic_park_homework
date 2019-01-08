@@ -18,16 +18,18 @@ const Park = function(name, ticketPrice, dinosaurs = []) {
   Park.prototype.mostAttractiveDinosaur = function() {
     const nums = this.dinosaurs.map(dinosaur => dinosaur.guestsAttractedPerDay);
     const maxNum = Math.max(...nums);
-    for (dinosaur of this.dinosaurs) {
-      if (dinosaur.guestsAttractedPerDay === maxNum) {
-        return dinosaur;
-      };
-    };
+    const foundDinosaur = this.dinosaurs.filter(dinosaur => dinosaur.guestsAttractedPerDay === maxNum);
+    return foundDinosaur;
   };
 
   Park.prototype.findDinosaurBySpecies = function(species) {
     const foundDinosaur = this.dinosaurs.filter(dinosaur => dinosaur.species === species);
     return foundDinosaur;
+  };
+
+  Park.prototype.deleteDinosaurSpecies = function(species) {
+    const foundDinosaur = this.findDinosaurBySpecies(species);
+    this.deleteDinosaur(foundDinosaur);
   };
 
 };
