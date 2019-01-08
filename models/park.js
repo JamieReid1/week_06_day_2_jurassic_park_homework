@@ -15,6 +15,16 @@ const Park = function(name, ticketPrice, dinosaurs = []) {
     this.dinosaurs.splice(index, 1);
   };
 
+  Park.prototype.mostAttractiveDinosaur = function() {
+    const nums = this.dinosaurs.map(dinosaur => dinosaur.guestsAttractedPerDay);
+    const maxNum = Math.max(...nums);
+    for (dinosaur of this.dinosaurs) {
+      if (dinosaur.guestsAttractedPerDay === maxNum) {
+        return dinosaur.species;
+      };
+    };
+  };
+
 };
 
 module.exports = Park;
