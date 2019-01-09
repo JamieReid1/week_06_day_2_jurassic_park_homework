@@ -29,7 +29,9 @@ const Park = function(name, ticketPrice, dinosaurs = []) {
 
   Park.prototype.deleteDinosaurSpecies = function(species) {
     const foundDinosaur = this.findDinosaurBySpecies(species);
-    this.deleteDinosaur(foundDinosaur);
+    for (dinosaur of foundDinosaur) {
+      this.deleteDinosaur(dinosaur);
+    };
   };
 
 };
